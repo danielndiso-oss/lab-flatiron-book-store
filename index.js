@@ -6,7 +6,6 @@ const bookStore = {
             title: 'Eloquent JavaScript: A Modern Introduction to Programming',
             author: 'Marjin Haverbeke',
             imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/51IKycqTPUL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg',
-            
         },
         {
             id:2,
@@ -25,7 +24,6 @@ const bookStore = {
             title: 'JavaScript: The Definitive Guide',
             author: 'David Flanagan',
             imageUrl: "https://images-na.ssl-images-amazon.com/images/I/51wijnc-Y8L._SX379_BO1,204,203,200_.jpg"
-            
         },
         {
             id:5,
@@ -38,10 +36,36 @@ const bookStore = {
             title: 'Cracking the Coding Interview',
             author: 'Gayle Laakmann McDowell',
             imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/41oYsXjLvZL._SY344_BO1,204,203,200_.jpg'
-            
         }
     ]
 }
 
-// Write your code here!
+// 1. Update Title Element
+const bookStoreTitle = document.querySelector('#header');
+bookStoreTitle.textContent = bookStore.name;
+
+// 2. Bonus: Remove Placeholder Element
+const placeholder = document.querySelector('#delete-this');
+if (placeholder) {
+    placeholder.remove();
+}
+
+// 3. Create and Append Book Elements
+const bookList = document.querySelector('#book-list');
+
+bookStore.books.forEach(book => {
+    const bookContainer = document.createElement('li');
+
+    const bookTitle = document.createElement('h3');
+    bookTitle.textContent = book.title;
+
+    const bookAuthor = document.createElement('p');
+    bookAuthor.textContent = book.author;
+
+    const bookImage = document.createElement('img');
+    bookImage.src = book.imageUrl;
+
+    bookContainer.append(bookTitle, bookAuthor, bookImage);
+    bookList.appendChild(bookContainer);
+});
 
